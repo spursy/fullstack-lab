@@ -5,9 +5,9 @@ var bind = require('../../js/bind.js');
 var expect = require('chai').expect();
 
 //test suite
-describe('net work request fun', function() {
+describe('test bind file', function() {
     //test case
-    it('get json test', function(){
+    it('test keyword this is undefined ', function(){
        expect.equal(bind.get_age(), undefined)
     })
 })
