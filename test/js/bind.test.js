@@ -22,4 +22,8 @@ describe('test bind file', function() {
     it ('test keyword this through bind fun', function() {
         expect.equal(bind.calculate_age(), 30);
     })
+
+    it ('test cae about simulate bind through apply', function() {
+        expect.equal(bind.simulate_bind(10), 20);
+    })
 })
