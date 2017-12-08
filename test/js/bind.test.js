@@ -8,6 +8,9 @@ var expect = require('chai').expect();
 describe('test bind file', function() {
     //test case
     it('test keyword this is undefined ', function(){
-       expect.equal(bind.get_age(), undefined)
+       expect.equal(bind.get_age_undefined(), undefined);
+    })
+    it('test keyword this is success ', function(){
+        expect.equal(bind.get_age_success(), 11);
     })
 })
