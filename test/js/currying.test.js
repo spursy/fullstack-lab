@@ -15,4 +15,12 @@ describe('test bind file', function() {
         expect.equal(currying.map_reduce_fun(), 300);
     })
 
+    it('test currying fun', function () {
+        expect.equal(currying.currying_fun(), 900);
+    })
+
+    it('test senior currying fun', function () {
+        expect.equal(currying.senior_currying_fun(), undefined);
+    })
+
 })
