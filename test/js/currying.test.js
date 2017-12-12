@@ -16,11 +16,7 @@ describe('test bind file', function() {
     })
 
     it('test currying fun', function () {
-        expect.equal(currying.currying_fun(), 900);
-    })
-
-    it('test senior currying fun', function () {
-        expect.equal(currying.senior_currying_fun(), undefined);
+        expect.equal(currying.currying_fun(), 10);
     })
 
 })
