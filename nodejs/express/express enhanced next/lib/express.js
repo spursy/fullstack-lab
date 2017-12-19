@@ -1,7 +1,7 @@
 const http = require('http');
 const mixin = require('merge-descriptors');
 const methods = require('methods');
-const Router = require('./router/router');
+const Route = require('./router/route.js');
 
 const slice = Array.prototype.slice;
 
@@ -21,11 +21,11 @@ proto.listen = function(port) {
 }
 
 proto.init = function() {
-    this.router = new Router();
+    this.route = new Route();
 }
 
 proto.handle = function() {
-    this.route.dispatch.apply(this.router, slice.call(arguments));
+    this.route.dispatch.apply(this.route, slice.call(arguments));
 }
 
 methods.forEach(function(method) {

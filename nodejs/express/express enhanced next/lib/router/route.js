@@ -11,27 +11,28 @@ function Route () {
     this.methods = {}
 }
 
-Route.prototype.dispatch = function() {
+
+Route.prototype.dispatch = function(req, res) {
     const method = req.method.toLowerCase()
     const stack = this.stack
     let idx = 0
+    next()
     function next() {
         const layer = stack[idx++]
         if (layer.method && layer.method !== method) {
             return next();
         }
-        layer.handel_request(req, res, next);
+        layer.handle_request(req, res, next);
     }
 }
 
 methods.forEach(function(method) {
-    Route.prototype[method] = function() {
-        const handles = flatten(slice.call(arguments));
-        for (let i=0; i<handles.length; i++) {
-            const layer = new Layer(method, handles[i]);
-            this.methods[method] = true;
-            this.stack.push(layer);
+    Route.prototype[method] = function () {
+        const handles = flatten(slice.call(arguments))
+        for (let i = 0; i < handles.length; i++) {
+          const layer = new Layer(method, handles[i])
+          this.methods[method] = true
+          this.stack.push(layer)
         }
-    }
+      }
 })
-

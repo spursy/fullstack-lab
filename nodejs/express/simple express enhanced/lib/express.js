@@ -23,9 +23,9 @@ proto.init = function () {
 }
 
 proto.handle = function (req, res) {
-    // 对handles中的函数进行遍历
     for (let i = 0; i < this.handles.length; i++) {
         const layer = this.handles[i]
+        
         layer.handle_request(req, res)
     }
 }
@@ -33,6 +33,7 @@ proto.handle = function (req, res) {
 methods.forEach(function(method) {
     proto[method] = function(fn) {
         const layer = new Layer(method, fn)
+        
         this.handles.push(layer)
     }
 })
