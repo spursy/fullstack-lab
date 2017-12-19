@@ -1,0 +1,37 @@
+const flatten = require('array-flatten');
+const methods = require('methods');
+const Layer = require('../layer/layer');
+
+const slice = Array.prototype.slice
+
+module.exports = Route
+
+function Route () {
+    this.stack = []
+    this.methods = {}
+}
+
+Route.prototype.dispatch = function() {
+    const method = req.method.toLowerCase()
+    const stack = this.stack
+    let idx = 0
+    function next() {
+        const layer = stack[idx++]
+        if (layer.method && layer.method !== method) {
+            return next();
+        }
+        layer.handel_request(req, res, next);
+    }
+}
+
+methods.forEach(function(method) {
+    Route.prototype[method] = function() {
+        const handles = flatten(slice.call(arguments));
+        for (let i=0; i<handles.length; i++) {
+            const layer = new Layer(method, handles[i]);
+            this.methods[method] = true;
+            this.stack.push(layer);
+        }
+    }
+})
+

@@ -1,0 +1,35 @@
+const http = require('http');
+const mixin = require('merge-descriptors');
+const methods = require('methods');
+const Router = require('./router/router');
+
+const slice = Array.prototype.slice;
+
+module.exports = function createServer() {
+    const app = function(req, res) {
+        app.handle(req, res);
+    }
+    mixin(app, proto, false);
+    app.init();
+    return app;
+}
+
+const proto = Object.create(null);
+proto.listen = function(port) {
+    const server = http.createServer(this);
+    server.listen.apply(server, arguments);    
+}
+
+proto.init = function() {
+    this.router = new Router();
+}
+
+proto.handle = function() {
+    this.route.dispatch.apply(this.router, slice.call(arguments));
+}
+
+methods.forEach(function(method) {
+    proto[method] = function(fn) {
+        this.route[method].apply(this.route, slice.call(arguments))
+    }
+})

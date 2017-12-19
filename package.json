@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/spursy/fullstack-lab#readme",
   "dependencies": {
+    "array-flatten": "^2.1.1",
     "chai": "^4.1.2",
     "http": "0.0.0",
     "log4js": "^2.4.1",
