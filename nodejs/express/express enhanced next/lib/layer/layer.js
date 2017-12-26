@@ -15,6 +15,6 @@ Layer.prototype.handle_request = function (req, res, next) {
   try {
     fn(req, res, next)
   } catch (err) {
-    throw err
+    throw err  
   }
 }

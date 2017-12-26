@@ -1,7 +1,7 @@
 const express = require('../../../nodejs/express/express enhanced next/lib/express');
 const app = express()
 
-app.get(function (req, res, next) {
+app.get(function (req, res, next) {  
   req.user = {
     name: 'foo'
   }

@@ -8,9 +8,8 @@ module.exports = Route
 
 function Route () {
     this.stack = []
-    this.methods = {}
+    this.methods = {} 
 }
-
 
 Route.prototype.dispatch = function(req, res) {
     const method = req.method.toLowerCase()

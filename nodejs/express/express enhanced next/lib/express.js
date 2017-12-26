@@ -11,7 +11,7 @@ module.exports = function createServer() {
     }
     mixin(app, proto, false);
     app.init();
-    return app;
+    return app; 
 }
 
 const proto = Object.create(null);
