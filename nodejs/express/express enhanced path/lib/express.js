@@ -37,7 +37,9 @@ proto.handle = function (req, res) {
 methods.forEach(function(method) {
     proto[method] = function (path) {
         this.lazyroute();
-
+        const route = this._router.route(path);
+        route[method].apply(route, slice.call(arguments, 1))
+        return this
     }
 })
 

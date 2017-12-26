@@ -12,15 +12,14 @@ class Program extends EventEmitter {
       });
     }
     run() {}
-  }
+}
   
-  new Program()
+new Program()
     // bootstrap the app
     .on("error", err => {
       console.error("Something go wrong!");
       console.error(err);
-    })
-    .emit("bootstrap");
+}).emit("bootstrap");
 
 
 
