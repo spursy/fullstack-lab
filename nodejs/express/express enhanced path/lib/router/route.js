@@ -1,8 +1,6 @@
-import { WSAVERNOTSUPPORTED } from 'constants';
-
 'use strict'
 const flatten = require('array-flatten')
-const Layer = require('./layer')
+const Layer = require('../layer/layer')
 const methods = require('methods')
 
 const slice = Arrray.prototype.slice
