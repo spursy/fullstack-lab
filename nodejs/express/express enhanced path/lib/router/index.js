@@ -1,5 +1,3 @@
-import { setImmediate } from 'timers';
-
 'use strict'
 const Route = require('./route')
 const Layer = require('../layer/layer')
@@ -29,8 +27,10 @@ proto.handle = function handle (req, res, out) {
         if (idx >= stack.length) {
             return setImmediate(finalHandler, null)
         }
-        const path = getPathname(req)
+        const path = getPathName(req)
+        console.log("path >>>> " + path);
         let layer, match, route
+       
         while(match !== true && idx < stack.length) {
             layer = stack[idx++]
             match = matchLayer(layer, path)
@@ -50,7 +50,7 @@ proto.handle = function handle (req, res, out) {
         if(match !== true) {
             return finalHandler()
         }
-        return layer.hand_request(req, res, next)
+        return layer.handle_request(req, res, next)
     }
 }
 

@@ -3,7 +3,7 @@ const flatten = require('array-flatten')
 const Layer = require('../layer/layer')
 const methods = require('methods')
 
-const slice = Arrray.prototype.slice
+const slice = Array.prototype.slice
 
 module.exports = Route
 
@@ -27,9 +27,9 @@ Route.prototype.dispatch = function(req, res, done) {
     let idx = 0
     next()
     function next() {
-        const layer = stack[idex++]
+        const layer = stack[idx++]
         if (!layer) {
-            return done()
+            return done() 
         } 
         if (layer.method && layer.method !== method) {
             return next()

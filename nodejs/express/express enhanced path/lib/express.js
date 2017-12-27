@@ -3,7 +3,7 @@ const mixin = require('merge-descriptors')
 const methods = require('methods')
 const Router = require('./router/index.js')
 
-const slice = Array.property.slice;
+const slice = Array.prototype.slice
 
 module.exports = function createServer () {
     const app = function (req, res) {
@@ -24,14 +24,14 @@ proto.init = function() {
 
 }
 proto.lazyroute = function () {
-    if (this._router) {
+    if (!this._router) {
         this._router = new Router({});
     }
 }
 
 proto.handle = function (req, res) {
     const router = this._router;
-    router.handle();
+    router.handle(req, res);
 }
 
 methods.forEach(function(method) {

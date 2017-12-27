@@ -6,7 +6,7 @@ const slice = Array.prototype.slice
 
 module.exports = Route
 
-function Route () {
+function Route () { 
     this.stack = []
     this.methods = {} 
 }
