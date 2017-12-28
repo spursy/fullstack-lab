@@ -8,7 +8,7 @@ const slice = Array.prototype.slice;
 module.exports = function createServer() {
     const app = function(req, res) {
         app.handle(req, res);
-    }
+    } 
     mixin(app, proto, false);
     app.init();
     return app; 

@@ -1,7 +1,7 @@
 'use strict'
 const Route = require('./route')
 const Layer = require('../layer/layer')
-const methods = require('methods')
+const methods = require('methods') 
 const parseUrl = require('parseurl')
 
 const setPrototypeOf = Object.setPrototypeOf
@@ -58,17 +58,17 @@ proto.route = function route (path) {
     const route = new Route(path)
     const layer = new Layer(path, {}, route.dispatch.bind(route))
     layer.route = route
-    this.stack.push(layer)
+    this.stack.push(layer) 
     return route
 }
 
-methods.forEach(function (method) {
-    proto[method] = function (path) {
-        const route = this.route(path)
-        route[method].apply(route, slice.call(arguments, 1))
-        return this
-    }
-})
+// methods.forEach(function (method) {
+//     proto[method] = function (path) {
+//         const route = this.route(path)
+//         route[method].apply(route, slice.call(arguments, 1))
+//         return this
+//     }
+// })
 
 function getPathName (req) {
     try {

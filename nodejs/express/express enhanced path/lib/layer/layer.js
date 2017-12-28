@@ -1,7 +1,7 @@
 'use strict'
 const pathRegexp = require('path-to-regexp')
 
-module.exports = Layer
+module.exports = Layer 
 
 function Layer (path, options, fn) {
     const opts = options || {}
@@ -9,7 +9,7 @@ function Layer (path, options, fn) {
     this.name = fn.name || '<anonymous>'
     this.regexp = pathRegexp(path, this.keys = [], opts)
     this.regexp.fast_star = path === '*'
-    this.regexp.fast_slash = path === '/'
+    this.regexp.fast_slash = path === '/'  
 }
 
 Layer.prototype.handle_request = function (req, res, next) {
