@@ -25,6 +25,7 @@ proto.handle = function handle (req, res, out) {
     const finalHandler = function (req, res) {
         console.log('reach final handler');
     }
+    console.log("Stack >>> " + JSON.stringify(JSON.stringify(stack)))
     next();
     function next () {
         if (idx >= stack.length) {
@@ -34,7 +35,9 @@ proto.handle = function handle (req, res, out) {
         let layer, match, route;
         while(match !== true && idx < stack.length) {
             layer = stack[idx++];
+
             match = matchLayer(layer, path);
+            console.log("match=" + match)
             route = layer.route;
             if (match !== true) {
                 continue;
@@ -75,6 +78,7 @@ proto.route = function route (path) {
     const layer = new Layer(path, {}, route.dispatch.bind(route));
     layer.route = route;
     this.stack.push(layer);
+    console.log("init stack +++" + JSON.stringify(this.stack))
     return route;
 }
 

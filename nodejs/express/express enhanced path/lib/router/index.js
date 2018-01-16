@@ -34,6 +34,7 @@ proto.handle = function handle (req, res, out) {
         while(match !== true && idx < stack.length) {
             layer = stack[idx++]
             match = matchLayer(layer, path)
+            console.log("match="+ match)
             route = layer.route
             if (match !== true) {
                 continue

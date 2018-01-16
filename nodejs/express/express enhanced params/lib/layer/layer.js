@@ -29,7 +29,7 @@ Layer.prototype.handle_request = function handleRequest (req, res, next) {
 Layer.prototype.match = function match (path) {
     let match;
     if (path != null) {
-        if (this.regex.fast_slash) {
+        if (this.regexp.fast_slash) {
             this.params = {};
             this.path = '';
             return true;
