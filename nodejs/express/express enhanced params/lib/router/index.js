@@ -1,5 +1,5 @@
 'use strict'
-const Route = rquire('./route.js');
+const Route = require('./router.js');
 const Layer = require('../layer/layer.js');
 const methods = require('methods');
 const parseUrl = require('parseurl');
@@ -17,9 +17,7 @@ const proto = module.exports = function (options) {
     router.stack = [];
     return router;
 };
-proto.param = function param(name, fn) {
-    (this.params[name] = this.params[name] || []).push(fn);
-};
+
 proto.handle = function handle (req, res, out) {
     const self = this
     const stack = this.stack;
@@ -32,7 +30,7 @@ proto.handle = function handle (req, res, out) {
         if (idx >= stack.length) {
             return setImmediate(finalHandler, null);
         }
-        const path = getPathname(req);
+        const path = getPathName(req);
         let layer, match, route;
         while(match !== true && idx < stack.length) {
             layer = stack[idx++];
@@ -64,6 +62,33 @@ proto.handle = function handle (req, res, out) {
     }
 }
 
+function getPathName (req) {
+    try {
+        return parseUrl(req).pathname;
+    } catch (err) {
+        return undefined;
+    }
+}
+
+proto.route = function route (path) {
+    const route = new Route(path);
+    const layer = new Layer(path, {}, route.dispatch.bind(route));
+    layer.route = route;
+    this.stack.push(layer);
+    return route;
+}
+
+function matchLayer (layer, path) {
+    try{
+        return layer.match(path);
+    } catch(err) {
+        return err;
+    }
+}
+
+proto.param = function param(name, fn) {
+    (this.params[name] = this.params[name] || []).push(fn);
+};
 proto.process_params = function processParams (layer, req, res, done) {
     const params = this.params;
     const keys = layer.keys;

@@ -33,7 +33,7 @@ proto.handle = function (req, res) {
 methods.forEach(function(method) {
     proto[method] = function(fn) {
         const layer = new Layer(method, fn)
-        
+
         this.handles.push(layer)
     }
 })

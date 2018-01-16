@@ -1,17 +1,17 @@
-const http = require('http')
-const mixin = require('merge-descriptors')
-const methods = require('methods')
-const Router = require('./router/index.js')
+const http = require('http');
+const mixin = require('merge-descriptors');
+const methods = require('methods');
+const Router = require('./router/index.js');
 
-const slice = Array.prototype.slice
+const slice = Array.prototype.slice;
 
 module.exports = function createServer () {
     const app = function (req, res) {
-        app.handle(req, res)
+        app.handle(req, res);
     }
-    mixin(app, proto, false)
-    app.init()
-    return app
+    mixin(app, proto, false);
+    app.init();
+    return app;
 }
 
 const proto = Object.create(null);
@@ -23,6 +23,7 @@ proto.listen = function (port) {
 proto.init = function() {
 
 }
+
 proto.lazyroute = function () {
     if (!this._router) { 
         this._router = new Router({});
@@ -38,8 +39,8 @@ methods.forEach(function(method) {
     proto[method] = function (path) { 
         this.lazyroute();
         const route = this._router.route(path);
-        route[method].apply(route, slice.call(arguments, 1))
-        return this
+        route[method].apply(route, slice.call(arguments, 1));
+        return this;
     }
 })
 

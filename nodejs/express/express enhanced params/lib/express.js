@@ -9,7 +9,7 @@ module.exports = function createServer() {
     const app = function(req, res) {
         app.handle(req, res);
     }
-    mixin(app. proto, false);
+    mixin(app, proto, false);
     app.init();
     return app;
 }
@@ -31,7 +31,7 @@ proto.lazyrouter = function lazyrouter () {
 }
 
 proto.param = function () {
-    this.lazyroute();
+    this.lazyrouter();
     this._router.param.apply(this._router, slice.call(arguments));
     return this;
 }

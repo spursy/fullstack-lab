@@ -1,5 +1,5 @@
 'use strict'
-const pathRegexp = require('path-to-regex');
+const pathRegexp = require('path-to-regexp');
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 module.exports = Layer;
 

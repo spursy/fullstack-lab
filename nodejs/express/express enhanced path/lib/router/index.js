@@ -22,7 +22,7 @@ proto.handle = function handle (req, res, out) {
     const finalHandler = function (req, res) {
         console.log('reach final handler')
     }
-    next()
+    next ()
     function next () {
         if (idx >= stack.length) {
             return setImmediate(finalHandler, null)
@@ -55,20 +55,12 @@ proto.handle = function handle (req, res, out) {
 }
 
 proto.route = function route (path) {
-    const route = new Route(path)
-    const layer = new Layer(path, {}, route.dispatch.bind(route))
-    layer.route = route
-    this.stack.push(layer) 
-    return route
+    const route = new Route(path);
+    const layer = new Layer(path, {}, route.dispatch.bind(route));
+    layer.route = route;
+    this.stack.push(layer);
+    return route;
 }
-
-// methods.forEach(function (method) {
-//     proto[method] = function (path) {
-//         const route = this.route(path)
-//         route[method].apply(route, slice.call(arguments, 1))
-//         return this
-//     }
-// })
 
 function getPathName (req) {
     try {

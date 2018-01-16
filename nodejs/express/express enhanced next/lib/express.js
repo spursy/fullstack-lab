@@ -30,6 +30,6 @@ proto.handle = function() {
 
 methods.forEach(function(method) {
     proto[method] = function(fn) {
-        this.route[method].apply(this.route, slice.call(arguments))
+        this.route[method].apply(this.route, slice.call(arguments));
     }
 })
