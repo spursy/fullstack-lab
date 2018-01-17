@@ -61,8 +61,14 @@ Layer.prototype.match = function match (path) {
     const keys = this.keys;
     const params = this.params;
     for(let i = 1; i < match.length; i++) {
-
+        const key = keys[i-1];
+        const prop = key.name;
+        var val = match[i];
+        if (val !== undefined || hasOwnProperty.call(params, prop)) {
+            params[prop] = val;
+        }
     }
+    return true;
 }
 
 
