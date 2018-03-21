@@ -4,7 +4,9 @@
   "description": "technology lab include nodejs js and angular ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug-server": "node --inspect ./nodejs/node-debug/serverdebug.js",
+    "debug-notserver": "node --inspect-brk=9229 ./nodejs/node-debug/notserverdebug.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,8 @@
     "array-flatten": "^2.1.1",
     "chai": "^4.1.2",
     "http": "0.0.0",
+    "koa": "^2.5.0",
+    "koa-route": "^3.2.0",
     "log4js": "^2.4.1",
     "merge-descriptors": "^1.0.1",
     "methods": "^1.1.2",
