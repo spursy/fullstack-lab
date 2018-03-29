@@ -1,3 +1,7 @@
+/*
+ * Result: First call data: some data
+ *
+ * */
 const fs = require('fs');
 const cache = {};
 
@@ -33,9 +37,3 @@ reader1.onDataReady(data => {
         console.log('Second call data: ' + data);
     });
 });
-
-
-/*
- * Result: First call data: some data
- *
- * */
