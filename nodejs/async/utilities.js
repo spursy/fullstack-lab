@@ -3,4 +3,10 @@ var urlToFilename = function (path) {
     return path.substring(index);
 }
 
-exports.urlToFilename = urlToFilename;
+var getPageLinks = function (html) {
+    return [];
+}
+exports = {
+    urlToFilename: urlToFilename,
+    getPageLinks: getPageLinks
+};
