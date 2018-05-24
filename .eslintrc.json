@@ -1,0 +1,32 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "globals": {
+    "angular": true
+  },
+  "rules": {
+    "camelcase": 1,
+    "curly": 2,
+    "brace-style": [
+      2,
+      "1tbs"
+    ],
+    "space-in-brackets": [
+      2,
+      "never"
+    ],
+    "space-infix-ops": 2,
+    "semi": 0,
+    "quotes": [
+      "error",
+      "single"
+    ]
+  }
+}
